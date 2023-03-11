@@ -1,0 +1,8 @@
+<!--pages/notification/notification.wxml-->
+<text>pages/notification/notification.wxml</text>
+
+<van-tabbar active="{{ active }}" bind:change="onChange">
+  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item icon="comment-o">通知</van-tabbar-item>
+  <van-tabbar-item icon="user-o">我的</van-tabbar-item>
+</van-tabbar>

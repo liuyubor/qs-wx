@@ -14,6 +14,12 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    active: 0,
+    tabbar: [
+        "/pages/index/index",
+        "/pages/notification/notification",
+        "/pages/user/user",
+    ]
   }
 })
