@@ -1,26 +1,32 @@
 <!--pages/user/user.wxml-->
-<view class="container">
-    <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
-      </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
+
+<view class="userinfo">
+    <view class="user-avatar">
+        <van-image round width="100" height="100" src="{{avatarUrl}}" />
+    </view>
+    <text class="user-name">{{username}}</text>
 </view>
 
+<view class="menu">
+    <view class="cell-list">
+        <van-cell-group inset>
+            <van-cell title="我的所有预约" size="large" is-link />
+            <van-cell title="修改个人资料" size="large" is-link border="{{ false }}" />
+        </van-cell-group>
+    </view>
+    <view class="cell-list">
+        <van-cell-group inset>
+            <van-cell title="后台管理系统" size="large" is-link />
+            <van-cell title="联系我们" size="large" is-link border="{{ false }}" />
+        </van-cell-group>
+    </view>
+</view>
+
+
+
+
 <van-tabbar active="{{ active }}" bind:change="onChange">
-  <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-  <van-tabbar-item icon="comment-o">通知</van-tabbar-item>
-  <van-tabbar-item icon="user-o">我的</van-tabbar-item>
+    <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+    <van-tabbar-item icon="comment-o">通知</van-tabbar-item>
+    <van-tabbar-item icon="user-o">我的</van-tabbar-item>
 </van-tabbar>
