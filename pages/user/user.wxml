@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
 
 <view class="userinfo">
-    <view class="user-avatar">
+    <view class="user-avatar" bindtap="bindViewTap">
         <van-image round width="100" height="100" src="{{avatarUrl}}" />
     </view>
     <text class="user-name">{{username}}</text>

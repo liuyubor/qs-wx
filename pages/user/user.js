@@ -11,7 +11,7 @@ Page({
         avatarUrl: defaultAvatarUrl,
         username: '注册登录'
     },
-      // tabbar处理函数
+    // tabbar处理函数
     onChange(event) {
         // event.detail 的值为当前选中项的索引
         wx.switchTab({
@@ -19,8 +19,9 @@ Page({
         })
     },
     bindViewTap() {
+        console.log("into bindViewTap");
         wx.navigateTo({
-            url: '../logs/logs'
+          url: '/pages/user/register/register',
         })
     },
     onLoad(options) {

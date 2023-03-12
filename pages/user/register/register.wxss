@@ -1,0 +1,34 @@
+/* pages/user/register/register.wxss */
+
+page {
+    background: #eeeeee;
+}
+
+.avatar-wrapper {
+    padding: 0;
+    width: 56px !important;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  
+  .avatar {
+    display: block;
+    width: 56px;
+    height: 56px;
+  }
+  
+  .container {
+    display: flex;
+    background: #ffffff;
+    border-radius: 15rpx;
+    margin: 20rpx;
+  }
+
+  .input-list {
+      margin: 100rpx 0;
+  }
+
+  .submit {
+    margin: 50rpx 20rpx;
+    border-radius: 20rpx;
+  }

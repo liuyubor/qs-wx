@@ -3,7 +3,9 @@
         "pages/index/index",
         "pages/logs/logs",
         "pages/user/user",
-        "pages/notification/notification"
+        "pages/notification/notification",
+        "pages/user/register/register",
+        "pages/index/info/info"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -31,6 +33,7 @@
     },
     "usingComponents": {
         "van-tabbar": "@vant/weapp/tabbar/index",
-        "van-tabbar-item": "@vant/weapp/tabbar-item/index"
+        "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+        "van-toast": "@vant/weapp/toast/index"
     }
 }

@@ -10,6 +10,15 @@ Page({
         hasMore: true,
         sites: []
     },
+    onTap(e) {
+        console.log(e);
+        var id = e.currentTarget.dataset.id; // 获取当前项的id
+        var name = e.currentTarget.dataset.name; // 获取当前项的name
+        var desc = e.currentTarget.dataset.desc; // 获取当前项的desc
+        wx.navigateTo({
+            url: '/pages/index/info/info?id=' + id + '&name=' + name + '&desc=' + desc,
+        })
+    },
     // tabbar处理函数
     onChange(event) {
         // event.detail 的值为当前选中项的索引

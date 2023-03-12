@@ -9,10 +9,10 @@ page {
     display: flex;
     padding: 50rpx 0 100rpx 0;
     width: 100%;
-    border-radius: 0 0 50rpx 50rpx;
+    border-radius: 0 0 15rpx 15rpx;
     flex-direction: column;
     align-items: center;
-    background: #b4d8e7;
+    background: #91cdff;
     color: #333333;
   }
   

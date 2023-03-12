@@ -1,9 +1,13 @@
 <!--index.wxml-->
 <view class="container">
     <scroll-view scroll-y="true" lower-threshold="100" bindscrolltolower="onLoadMore">
-        <view wx:for="{{sites}}" wx:key="index">
-            <view class="item">
-                <view class="title">{{item.name}}</view>
+        <view wx:for="{{sites}}" wx:key="index" bindtap="onTap" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}">
+            <view class="item" >
+                <l-card type="primary" plaintext="{{true}}" title="{{item.name}}" >
+                    <view class="content">
+                        {{item.description}}
+                    </view>
+                </l-card>
             </view>
         </view>
     </scroll-view>
