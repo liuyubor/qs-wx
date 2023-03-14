@@ -6,7 +6,8 @@
         "pages/notification/notification",
         "pages/user/register/register",
         "pages/index/info/info",
-        "pages/user/updataPwd/updataPwd"
+        "pages/user/updataPwd/updataPwd",
+        "pages/user/updataUser/updataUser"
     ],
     "window": {
         "backgroundTextStyle": "light",
