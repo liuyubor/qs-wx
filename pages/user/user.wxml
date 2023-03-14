@@ -14,7 +14,7 @@
             <van-cell title="修改个人资料" size="large" is-link border="{{ false }}" 
             url="/pages/user/updataUser/updataUser"/>
             <van-cell title="修改密码" size="large" is-link border="{{ false }}"
-            url="/pages/user/updataPwd/updataPwd"/>
+            url="/pages/user/updataPwd/updataPwd" />
         </van-cell-group>
     </view>
     <view class="cell-list">

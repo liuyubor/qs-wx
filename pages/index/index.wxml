@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
     <scroll-view scroll-y="true" lower-threshold="100" bindscrolltolower="onLoadMore">
-        <view wx:for="{{sites}}" wx:key="index" bindtap="onTap" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}" data-days="{{item.days}}" data-capacity="{{item.capacity}}" data-time_slot="{{item.time_slot}}">
+        <view wx:for="{{sites}}" wx:key="index" bindtap="onTap" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}" data-days="{{item.days}}" data-capacity="{{item.capacity}}" data-count="{{item.count}}">
             <view class="item" >
                 <l-card type="primary" plaintext="{{true}}" title="{{item.name}}" >
                     <view class="content">

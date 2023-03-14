@@ -1,8 +1,6 @@
 // app.js
-const cos = require('miniprogram_npm/cos-wx-sdk-v5/index.js')
 
 App({
-    cos:cos,
     onLaunch() {
         // 展示本地存储能力
         const logs = wx.getStorageSync('logs') || []
@@ -20,7 +18,7 @@ App({
                         method: 'POST',
                         data: { code: res.code },
                         success: response => {
-                            wx.setStorage("openid", response.data.openid);
+                            wx.setStorageSync("openid", response.data.openid);
                             // 获取用户信息并进行相关处理
                             wx.request({
                                 url: `${this.globalData.baseUrl}user/wechatLogin`,

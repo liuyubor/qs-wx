@@ -1,31 +1,77 @@
 // pages/user/register/register.js
 const app = getApp()
+var COS = require('cos-wx-sdk-v5');
+var cos = new COS({
+    getAuthorization: (options, callback) => {
+        // 获取签名
+        wx.request({
+            url: `${app.globalData.baseUrl}user/upload`,
+            success: (result) => {
+                console.log(result)
+                var data = result.data.data;
+                var credentials = data && data.credentials;
+                if (!data || !credentials) return console.error('credentials invalid');
+                callback({
+                    TmpSecretId: credentials.tmpSecretId,
+                    TmpSecretKey: credentials.tmpSecretKey,
+                    XCosSecurityToken: credentials.sessionToken,
+                    ExpiredTime: data.expiredTime,
+                });
+            }
+        });
+        console.log(callback);
+    },
 
+})
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
 
 Page({
-    cos:null,
     data: {
         avatarUrl: defaultAvatarUrl,
-        nickname: null,
-        password: null,
-        username: null,
-        phone: null
+        nickname: "",
+        password: "",
+        username: "",
+        phone: "",
+        cos: null
     },
     onChooseAvatar(e) {
         const { avatarUrl } = e.detail
         this.setData({
             avatarUrl,
         })
+        cos.postObject({
+            Bucket: "emos-1303819828",
+            Region: "ap-nanjing",
+            Key: 'avatar/' + wx.getStorageSync('openid') + '.jepg',
+            FilePath: this.data.avatarUrl,
+        }, function (err, res) {
+            if (err) {
+                console.log('上传出错', err);
+            } else {
+                console.log('上传成功', res);
+                wx.setStorageSync('avatarUrl', res.headers.location)
+            }
+        })
     },
     onClick(e) {
+        wx.getStorageInfo({
+            success(res) {
+                console.log(res.keys)
+                console.log(res.currentSize)
+                console.log(res.limitSize)
+            }
+        })
+        console.log("into click");
         const usernameReg = /^.{1,32}$/;
         const nicknameReg = /^.{1,32}$/;
         const phoneReg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
         const passwordReg = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{6,32}$/;
         const passwordValid = passwordReg.test(this.data.password);
         const phoneValid = phoneReg.test(this.data.phone);
+        this.setData({
+            nickname: "ENOON"
+        })
         const nicknameValid = nicknameReg.test(this.data.nickname);
         const usernameValid = usernameReg.test(this.data.username);
         if (!usernameValid) {
@@ -56,64 +102,38 @@ Page({
             });
             return false;
         }
-
-        cos.postObject({
-            Bucket: "emos-1303819828",
-            Region: "ap-nanjing",
-            Key: 'avatar/' + wx.getStorageSync('openid'),
-            FilePath: avatarUrl,
-            onProgress: function (info) {
-                console.log(JSON.stringify(info));
-            }
-        }, (err, data) => {
-            console.log(err || data);
-            console.log(data.Location)
-            if(data) {
-                wx.request({
-                    url: `${app.globalData.baseUrl}user/register`,
-                    method: 'POST',
-                    data: {
-                        avatar: data.Location,
-                        openid: wx.getStorageSync('openid'),
-                        nickname: this.data.nickname,
-                        password: this.data.password,
-                        username: this.data.username,
-                        tel: this.data.phone
-                    },
-                    success: (res) => {
-                        console.log(res)
-                        if (response.statusCode === 200 && res.data.rows === 1) {
-                            console.log("注册成功")
-                            Toast.success('注册成功');
-                        }
-                    }
-        
-                })
-            }
-            
-        });
-
-        
-    },
-    onLoad() {
-        const cos = new app.cos({
-            getAuthorization: (options, callback) => {
-                // 异步获取签名
-                wx.request({
-                    url: `${app.globalData.baseUrl}user/upload`,
-                    success: (result) => {
-                        var data = result.data;
-                        console.log(data);
-                        callback({
-                            TmpSecretId: data.credentials && data.credentials.tmpSecretId,
-                            TmpSecretKey: data.credentials && data.credentials.tmpSecretKey,
-                            XCosSecurityToken: data.credentials && data.credentials.sessionToken,
-                            ExpiredTime: data.expiredTime,
-                        });
-                    }
-                });
+        wx.request({
+            url: `${app.globalData.baseUrl}user/register`,
+            method: 'POST',
+            data: {
+                photo: wx.getStorageSync('avatarUrl'),
+                openId: wx.getStorageSync('openid'),
+                nickname: this.data.nickname,
+                password: this.data.password,
+                username: this.data.username,
+                tel: this.data.phone
             },
-
+            success: (res) => {
+                if (res.statusCode === 200 && res.data.rows === 1) {
+                    wx.showToast({
+                        title: '注册成功',
+                    });
+                } else {
+                    wx.showToast({
+                        title: '注册失败',
+                        icon: 'error'
+                    })
+                }
+            }
         });
+        wx.setStorageSync('username', this.data.username)
+
+        wx.getStorageInfo({
+            success(res) {
+                console.log(res.keys)
+                console.log(res.currentSize)
+                console.log(res.limitSize)
+            }
+        })
     }
 })

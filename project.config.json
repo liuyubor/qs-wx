@@ -44,7 +44,8 @@
             "outputPath": ""
         },
         "ignoreDevUnusedFiles": false,
-        "ignoreUploadUnusedFiles": false
+        "ignoreUploadUnusedFiles": false,
+        "condition": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
@@ -54,5 +55,8 @@
     "editorSetting": {
         "tabIndent": "insertSpaces",
         "tabSize": 4
+    },
+    "simulatorPluginLibVersion": {
+        "wxext14566970e7e9f62": "2.27.3"
     }
 }

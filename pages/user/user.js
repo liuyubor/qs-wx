@@ -6,10 +6,10 @@ const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia0
 Page({
 
     data: {
-        isLogin: true,
+        isLogin: false,
         active: 2,
         avatarUrl: defaultAvatarUrl,
-        username: '点击注册'
+        username: '登录注册'
     },
     // tabbar处理函数
     onChange(event) {
@@ -19,34 +19,44 @@ Page({
         })
     },
     bindViewTap() {
-        console.log("into bindViewTap");
-        wx.navigateTo({
-            url: '/pages/user/register/register',
-        })
+        if(wx.getStorageSync('token')){
+            this.setData({
+                isLogin: true,
+                avatarUrl: wx.getStorageSync('avatarUrl'),
+                username: wx.getStorageSync('nickname')
+            })
+        }else{
+            wx.navigateTo({
+                url: '/pages/user/register/register',
+            })
+        }
+
     },
-    onLoad(options) {
+    onLoad() {
+        // 判断登录
+
         // 获取用户信息
-        wx.request({
-            url: `${app.globalData.baseUrl}user/loadUserInfo`,
-            data: {
-                token: wx.getStorageSync('token')
-            },
-            success(res) {
-                console.log(res.data);
-                wx.setStorage({
-                    username: res.data.username,
-                    tel: res.data.tel
-                });
-                this.setData({
-                    avatarUrl: res.data.photo,
-                    username: res.data.nickname
-                })
-            }
-        })
-    },
-
-    onReachBottom() {
-
-    },
+        if (this.data.isLogin) {
+            wx.request({
+                url: `${app.globalData.baseUrl}user/loadUserInfo`,
+                data: {
+                    token: wx.getStorageSync('token')
+                },
+                success(res) {
+                    if (res.statusCode === 200) {
+                        console.log(res.data);
+                        wx.setStorage({
+                            username: res.data.username,
+                            tel: res.data.tel
+                        });
+                        this.setData({
+                            avatarUrl: res.data.photo,
+                            username: res.data.nickname
+                        })
+                    }
+                }
+            })
+        }
+    }
 
 })
