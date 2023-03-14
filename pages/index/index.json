@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "l-card": "lin-ui/card/index"
+    "l-card": "lin-ui/card/index",
+    "van-empty": "@vant/weapp/empty/index"
   }
 }

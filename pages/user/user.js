@@ -9,7 +9,7 @@ Page({
         isLogin: true,
         active: 2,
         avatarUrl: defaultAvatarUrl,
-        username: '注册登录'
+        username: '点击注册'
     },
     // tabbar处理函数
     onChange(event) {
@@ -21,15 +21,28 @@ Page({
     bindViewTap() {
         console.log("into bindViewTap");
         wx.navigateTo({
-          url: '/pages/user/register/register',
+            url: '/pages/user/register/register',
         })
     },
     onLoad(options) {
-        if (wx.getUserProfile) {
-            this.setData({
-                canIUseGetUserProfile: true
-            })
-        }
+        // 获取用户信息
+        wx.request({
+            url: `${app.globalData.baseUrl}user/loadUserInfo`,
+            data: {
+                token: wx.getStorageSync('token')
+            },
+            success(res) {
+                console.log(res.data);
+                wx.setStorage({
+                    username: res.data.username,
+                    tel: res.data.tel
+                });
+                this.setData({
+                    avatarUrl: res.data.photo,
+                    username: res.data.nickname
+                })
+            }
+        })
     },
 
     onReachBottom() {

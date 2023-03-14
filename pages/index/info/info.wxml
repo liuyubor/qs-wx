@@ -13,14 +13,24 @@
     <van-tab title="查看信息">
         <view class="container">
             <view class="circle">
-                <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180"/>
+                <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
             </view>
 
         </view>
     </van-tab>
     <van-tab title="可预约时段">
         <view class="container">
-
+            <scroll-view scroll-y="true" lower-threshold="100" bindscrolltolower="onLoadDate">
+                <view wx:for="{{siteDate}}" wx:key="index" bindtap="onTap" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}">
+                    <view class="item">
+                        <l-card type="primary" plaintext="{{true}}" title="{{item.name}}">
+                            <view class="content">
+                                {{item.description}}
+                            </view>
+                        </l-card>
+                    </view>
+                </view>
+            </scroll-view>
         </view>
     </van-tab>
 </van-tabs>

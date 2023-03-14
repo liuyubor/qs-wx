@@ -86,3 +86,7 @@ page {
     font-size: 24rpx;
     margin-left: 12rpx;
   }
+
+  .network {
+      display: none;
+  }

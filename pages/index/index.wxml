@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
     <scroll-view scroll-y="true" lower-threshold="100" bindscrolltolower="onLoadMore">
-        <view wx:for="{{sites}}" wx:key="index" bindtap="onTap" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}">
+        <view wx:for="{{sites}}" wx:key="index" bindtap="onTap" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}" data-days="{{item.days}}" data-capacity="{{item.capacity}}" data-time_slot="{{item.time_slot}}">
             <view class="item" >
                 <l-card type="primary" plaintext="{{true}}" title="{{item.name}}" >
                     <view class="content">
@@ -12,6 +12,11 @@
         </view>
     </scroll-view>
 </view>
+
+<view class="{{loadBg}}">
+    <van-empty image="network" description="加载失败" />
+</view>
+
 <van-tabbar active="{{ active }}" bind:change="onChange">
     <van-tabbar-item icon="home-o">首页</van-tabbar-item>
     <van-tabbar-item icon="comment-o">通知</van-tabbar-item>

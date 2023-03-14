@@ -3,12 +3,16 @@ const app = getApp()
 
 Page({
     data: {
+        loadBg: "network",
         active: 0,
         isAppointment: false,
         currentPage: 1,
         size: 10,
         hasMore: true,
-        sites: []
+        sites: [],
+        latitude: null,
+        longitude: null,
+
     },
     onTap(e) {
         console.log(e);
@@ -51,18 +55,30 @@ Page({
                     currentPage: this.data.currentPage + 1
                 });
             },
+            fail: (res) => {
+                wx.showToast({
+                  title: '加载失败！',
+                  icon: "error"
+                })
+                this.setData({
+                    loadBg: "error"
+                })
+            },
             complete: () => {
                 wx.hideLoading();
-                console.log(this.data);
             }
         });
     },
     onLoad() {
-        if (wx.getUserProfile) {
-            this.setData({
-                canIUseGetUserProfile: true
-            })
-        }
+        wx.getLocation({
+            type: 'wgs84',
+            success (res) {
+              setData({
+                latitude: res.latitude,
+                longitude: res.longitude
+              }) 
+            }
+           })
         this.loadMore();
     },
     onReachBottom() {

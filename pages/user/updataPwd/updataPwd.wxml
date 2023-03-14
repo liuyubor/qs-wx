@@ -1,0 +1,12 @@
+<!--pages/user/updataPwd/updataPwd.wxml-->
+<view class="container">
+    <view class="input-list">
+        <van-cell-group>
+            <van-field required password confirm-type="done" size="large" type="password" label="密码" model:value="{{ password }}" placeholder="请输入密码" border="true" />
+            <van-field required password confirm-type="done" size="large" type="password" label="密码" model:value="{{ password }}" placeholder="请重复密码" border="true" />
+        </van-cell-group>
+    </view>
+</view>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">提交</van-button>
+</view>
