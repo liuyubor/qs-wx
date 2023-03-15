@@ -43,17 +43,19 @@ Page({
             },
             success: (res) => {
                 console.log(res);
-                const sites = res.data.sites;
-                if (sites.length < this.data.size) {
-                    console.log(sites.length);
+                if(res.statusCode === 200) {
+                    const sites = res.data.sites;
+                    if (sites.length < this.data.size) {
+                        this.setData({
+                            hasMore: false
+                        });
+                    }
                     this.setData({
-                        hasMore: false
+                        sites: this.data.sites.concat(sites),
+                        currentPage: this.data.currentPage + 1
                     });
                 }
-                this.setData({
-                    sites: this.data.sites.concat(sites),
-                    currentPage: this.data.currentPage + 1
-                });
+
             },
             fail: (res) => {
                 wx.showToast({

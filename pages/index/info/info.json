@@ -3,6 +3,8 @@
         "van-tab": "@vant/weapp/tab/index",
         "van-tabs": "@vant/weapp/tabs/index",
         "van-circle": "@vant/weapp/circle/index",
-        "l-card": "lin-ui/card/index"
+        "l-card": "lin-ui/card/index",
+        "van-index-bar": "@vant/weapp/index-bar/index",
+        "van-index-anchor": "@vant/weapp/index-anchor/index"
     }
 }

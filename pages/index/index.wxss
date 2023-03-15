@@ -90,3 +90,7 @@ page {
   .network {
       display: none;
   }
+
+  .cell-list {
+    margin: 50rpx 0;
+  }
