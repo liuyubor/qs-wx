@@ -26,6 +26,5 @@
             <view wx:for="{{siteDate}}" wx:for-index="idx" wx:for-item="sites" data-id="{{sites.id}}" data-name="{{sites.name}}" data-desc="{{sites.description}}">
             </view>
         </view>
-
     </van-tab>
 </van-tabs>
