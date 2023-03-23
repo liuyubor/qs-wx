@@ -11,10 +11,8 @@
     <view class="cell-list">
         <van-cell-group inset>
             <van-cell title="我的所有预约" size="large" is-link />
-            <van-cell title="修改个人资料" size="large" is-link border="{{ false }}" 
+            <van-cell title="更新个人信息" size="large" is-link border="{{ false }}" 
             url="/pages/user/updataUser/updataUser"/>
-            <van-cell title="修改密码" size="large" is-link border="{{ false }}"
-            url="/pages/user/updataPwd/updataPwd" />
         </van-cell-group>
     </view>
     <view class="cell-list">

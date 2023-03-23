@@ -118,6 +118,8 @@ Page({
                     wx.showToast({
                         title: '注册成功',
                     });
+                    wx.setStorageSync('username', this.data.username)
+                    wx.navigateBack()
                 } else {
                     wx.showToast({
                         title: '注册失败',
@@ -126,14 +128,7 @@ Page({
                 }
             }
         });
-        wx.setStorageSync('username', this.data.username)
 
-        wx.getStorageInfo({
-            success(res) {
-                console.log(res.keys)
-                console.log(res.currentSize)
-                console.log(res.limitSize)
-            }
-        })
+
     }
 })

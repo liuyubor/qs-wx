@@ -28,6 +28,7 @@ App({
                                 method: 'POST',
                                 success: resp => {
                                     //userID、token、permissions、result
+                                    //获取到openid以后
                                     if (resp.data.result === 'true') {
                                         wx.setStorageSync('token', resp.data.token);
                                         console.log("登录成功" + resp.data.token)
