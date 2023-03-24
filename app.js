@@ -2,10 +2,6 @@
 
 App({
     onLaunch() {
-        // 展示本地存储能力
-        const logs = wx.getStorageSync('logs') || []
-        logs.unshift(Date.now())
-        wx.setStorageSync('logs', logs)
 
         // 登录
         wx.login({
@@ -18,28 +14,27 @@ App({
                         method: 'POST',
                         data: { code: res.code },
                         success: response => {
-                            wx.setStorageSync("openid", response.data.openid);
-                            // 获取用户信息并进行相关处理
+                            console.log(response.data)
+                            // 将openid存储在本地
+                            wx.setStorageSync("openId", response.data.openId);
+                            console.log("openId:=>" + response.data.openid)
+                            // 获取用户信息并进行登录相关处理
                             wx.request({
-                                url: `${this.globalData.baseUrl}user/wechatLogin`,
+                                url: `${this.globalData.baseUrl}user/login`,
+                                // method: 'POST',
                                 data: {
-                                    code: response.data.openid
+                                    openId: response.data.openid
                                 },
-                                method: 'POST',
-                                success: resp => {
-                                    //userID、token、permissions、result
-                                    //获取到openid以后
-                                    if (resp.data.result === 'true') {
-                                        wx.setStorageSync('token', resp.data.token);
-                                        console.log("登录成功" + resp.data.token)
-                                    } else {
-                                        wx.switchTab({
-                                            url: '/pages/user/user',
-                                        })
-                                        wx.showToast({
-                                            title: '请登录',
-                                            icon: 'none'
-                                        })
+                                success: res => {
+                                    if (res.statusCode === 200) {
+                                        console.log(res.data);
+                                        wx.setStorageSync('username', res.data.username);
+                                        wx.setStorageSync('nickname', res.data.nickname);
+                                        wx.setStorageSync('avatarUrl', res.data.photo);
+                                        wx.setStorageSync('tel', res.data.tel);
+                                        wx.setStorageSync('isLogin', true);
+                                        this.globalData.isLogin = true;
+                                        this.globalData.userInfo = res.data;
                                     }
                                 }
                             })

@@ -57,6 +57,30 @@ Page({
                 }
             })
         }
+    },
+    onShow() { 
+        if (this.data.isLogin) { 
+            wx.request({ 
+                url: `${app.globalData.baseUrl}user/loadUserInfo`, 
+                data: { 
+                    token: wx.getStorageSync('token') 
+                }, 
+                success(res) { 
+                    if (res.statusCode === 200) { 
+                        console.log(res.data); 
+                        wx.setStorage({ 
+                            username: res.data.username, 
+                            tel: res.data.tel 
+                        }); 
+                        this.setData({ 
+                            avatarUrl: res.data.photo, 
+                            username: res.data.nickname 
+                        }) 
+                    } 
+                } 
+            })
+        }
+
     }
 
 })
