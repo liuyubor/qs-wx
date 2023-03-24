@@ -71,7 +71,8 @@ Page({
                 data: { 
                     openId: wx.getStorageSync('openId') 
                 }, 
-                success(res) { 
+                success:(res) =>{ 
+                    console.log(res);
                     if (res.statusCode === 200) { 
                         console.log(res.data); 
                         wx.setStorage({ 
