@@ -30,7 +30,6 @@ Page({
     data: {
         avatarUrl: defaultAvatarUrl,
         nickname: "",
-        password: "",
         username: "",
         phone: "",
         cos: null
@@ -55,19 +54,10 @@ Page({
         })
     },
     onClick(e) {
-        wx.getStorageInfo({
-            success(res) {
-                console.log(res.keys)
-                console.log(res.currentSize)
-                console.log(res.limitSize)
-            }
-        })
         console.log("into click");
         const usernameReg = /^.{1,32}$/;
         const nicknameReg = /^.{1,32}$/;
         const phoneReg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
-        const passwordReg = /^(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{6,32}$/;
-        const passwordValid = passwordReg.test(this.data.password);
         const phoneValid = phoneReg.test(this.data.phone);
         this.setData({
             nickname: "ENOON"
@@ -77,13 +67,6 @@ Page({
         if (!usernameValid) {
             wx.showToast({
                 title: '请输入长度在1~32个字符的用户名',
-                icon: 'none'
-            });
-            return false;
-        }
-        if (!passwordValid) {
-            wx.showToast({
-                title: '密码必须包含数字和字母，且长度在6到32之间',
                 icon: 'none'
             });
             return false;
@@ -109,7 +92,6 @@ Page({
                 photo: wx.getStorageSync('avatarUrl'),
                 openId: wx.getStorageSync('openid'),
                 nickname: this.data.nickname,
-                password: this.data.password,
                 username: this.data.username,
                 tel: this.data.phone
             },
@@ -118,7 +100,11 @@ Page({
                     wx.showToast({
                         title: '注册成功',
                     });
-                    wx.setStorageSync('username', this.data.username)
+                    wx.setStorageSync('username', this.data.username);
+                    wx.setStorageSync('nickname', this.data.nickname);
+                    wx.setStorageSync('avatarUrl', this.data.photo);
+                    wx.setStorageSync('tel', this.data.phone);
+                    wx.setStorageSync('isLogin', true);
                     wx.navigateBack()
                 } else {
                     wx.showToast({

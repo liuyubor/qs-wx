@@ -35,20 +35,27 @@ App({
                                         wx.setStorageSync('isLogin', true);
                                         this.globalData.isLogin = true;
                                         this.globalData.userInfo = res.data;
+                                    } else {
+                                        wx.navigateTo({
+                                            url: '/pages/user/register/register',
+                                        })
+                                        wx.showToast({
+                                            title: '请先注册',
+                                        })
                                     }
                                 }
                             })
                         },
                         fail: function (error) {
                             wx.showToast({
-                                title: '登录异常',
+                                title: '获取uuid失败',
                                 icon: 'error'
                             })
                         }
                     })
                 } else {
                     wx.showToast({
-                        title: '登录异常',
+                        title: '微信登录异常',
                         icon: 'error'
                     })
                 }
