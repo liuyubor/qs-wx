@@ -106,7 +106,7 @@ Page({
                     wx.setStorageSync('tel', this.data.phone);
                     wx.setStorageSync('isLogin', true);
                     app.globalData.isLogin = true;
-                    wx.navigateBack()
+                    wx.navigateBack();
                 } else {
                     wx.showToast({
                         title: '注册失败',

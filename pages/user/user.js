@@ -59,11 +59,17 @@ Page({
         }
     },
     onShow() { 
-        if (this.data.isLogin) { 
+        // 判断登录
+        if (app.globalData.isLogin) { 
+            this.setData({ 
+                isLogin: true, 
+                avatarUrl: wx.getStorageSync('avatarUrl'), 
+                username: wx.getStorageSync('nickname') 
+            }) 
             wx.request({ 
                 url: `${app.globalData.baseUrl}user/loadUserInfo`, 
                 data: { 
-                    token: wx.getStorageSync('token') 
+                    openId: wx.getStorageSync('openId') 
                 }, 
                 success(res) { 
                     if (res.statusCode === 200) { 

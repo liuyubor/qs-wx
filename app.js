@@ -16,7 +16,7 @@ App({
                         success: response => {
                             console.log(response.data)
                             // 将openid存储在本地
-                            wx.setStorageSync("openId", response.data.openId);
+                            wx.setStorageSync("openId", response.data.openid);
                             console.log("openId:=>" + response.data.openid)
                             // 获取用户信息并进行登录相关处理
                             wx.request({
