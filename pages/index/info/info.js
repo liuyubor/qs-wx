@@ -17,29 +17,24 @@ Page({
         timeList: null,
         stats: 69,
     },
-    onLoad: function (options) {
-        var siteId = options.id; // 获取传递的id值
-        var siteName = options.name; // 获取传递的name值
-        var siteDesc = options.desc; // 获取传递的name值
-        var siteCount = options.count;
-        var siteCap = options.capacity;
-        var siteDays = options.days;
-        // 显示传递的参数值
+    onLoad: (options) => {
         this.setData({
-            siteId: siteId,
-            siteName: siteName,
-            siteDesc: siteDesc,
-            siteCount: siteCount,
-            siteCap: siteCap,
-            siteDays: siteDays
+            siteId: options.id,
+            siteName: options.name,
+            siteDesc: options.desc,
+            siteCount: options.count,
+            siteCap: options.capacity,
+            siteDays: options.days
         });
+
+        console.log(this.data);
 
         // 获取时间段信息
         wx.request({
             url: `${app.globalData.baseUrl}site/searchTimeById`,
             method: 'POST',
             data: {
-                id: siteId
+                id: this.data.siteId
             },
             success: res => {
                 console.log(res.data);
@@ -48,5 +43,8 @@ Page({
                 })
             }
         })
+    },
+    onTimeClick: (e) => {
+        console.log(e);
     }
 })
