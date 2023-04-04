@@ -1,13 +1,9 @@
-<!--pages/index/info/info.wxml-->
+<!-- pages/index/info/info.wxml -->
 <van-tabs active="{{ active }}" swipeable sticky animated>
     <van-tab title="站点须知">
         <view class="container">
-            <text class="siteTitle">
-                {{siteName}}
-            </text>
-            <text class="text">
-                {{siteDesc}}
-            </text>
+            <text class="siteTitle">{{siteName}}</text>
+            <text class="text">{{siteDesc}}</text>
         </view>
     </van-tab>
     <van-tab title="查看信息">
@@ -15,16 +11,16 @@
             <view class="circle">
                 <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
             </view>
-            <view class="buttom-list">
-
-            </view>
-
+            <view class="buttom-list"></view>
         </view>
     </van-tab>
     <van-tab title="可预约时段">
         <view class="container">
-            <view wx:for="{{siteDate}}" wx:for-index="idx" wx:for-item="sites" data-id="{{sites.id}}" data-name="{{sites.name}}" data-desc="{{sites.description}}">
-            </view>
+            <van-cell-group>
+                <view wx:for="{{timeList}}" wx:for-index="idx" wx:for-item="time">
+                    <van-cell title="{{time}}" size="large" bind:click="onTimeClick"/>
+                </view>
+            </van-cell-group>
         </view>
     </van-tab>
 </van-tabs>
