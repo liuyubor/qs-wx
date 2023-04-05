@@ -1,1 +1,5 @@
 /* pages/index/confirm/confirm.wxss */
+
+.container {
+    padding: 10rpx 0 150rpx 0;
+}

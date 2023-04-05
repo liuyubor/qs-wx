@@ -35,10 +35,9 @@ Page({
         })
     },
     onTimeClick: function(e) {
-        console.log(e);
         var time = e.currentTarget.dataset.item;
         wx.navigateTo({
-            
+            url: '/pages/index/confirm/confirm?time=' + time + '&siteId=' + this.data.siteId + '&siteName=' + this.data.siteName + '&siteDesc=' + this.data.siteDesc,
         })
     }
 })

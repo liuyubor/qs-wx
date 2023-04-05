@@ -10,11 +10,13 @@
         <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
     </view>
 </view>
-<view class="container">
-    <van-cell title="item" size="large" bind:click="onTimeClick" />
-    <van-cell-group>
+<view>
+    <van-cell-group inset>
+        <van-cell title="可预约时间段" size="large" />
+    </van-cell-group>
+    <van-cell-group inset>
         <block wx:for="{{timeList}}">
-            <van-cell title="{{item}}" size="large" bind:click="onTimeClick" data-item="{{item}}"/>
+            <van-cell title="{{item}}" bind:click="onTimeClick" data-item="{{item}}" is-link="true" />
         </block>
     </van-cell-group>
 </view>
