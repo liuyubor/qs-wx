@@ -9,6 +9,13 @@ page {
     border-radius: 15rpx;
 }
 
+.title {
+    font-size: 30rpx;
+    font-weight: bold;
+    padding: 30rpx;
+    text-align: center;
+}
+
 .text {
     padding: 50rpx;
     line-height: 1.5;

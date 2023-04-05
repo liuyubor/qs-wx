@@ -1,26 +1,20 @@
 <!-- pages/index/info/info.wxml -->
-<van-tabs active="{{ active }}" swipeable sticky animated>
-    <van-tab title="站点须知">
-        <view class="container">
-            <text class="siteTitle">{{siteName}}</text>
-            <text class="text">{{siteDesc}}</text>
-        </view>
-    </van-tab>
-    <van-tab title="查看信息">
-        <view class="container">
-            <view class="circle">
-                <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
-            </view>
-            <view class="buttom-list"></view>
-        </view>
-    </van-tab>
-    <van-tab title="可预约时段">
-        <view class="container">
-            <van-cell-group>
-                <view wx:for="{{timeList}}" wx:for-index="idx" wx:for-item="time">
-                    <van-cell title="{{time}}" size="large" bind:click="onTimeClick"/>
-                </view>
-            </van-cell-group>
-        </view>
-    </van-tab>
-</van-tabs>
+<view class="container">
+    <view class="title">
+        <text class="siteTitle">{{siteName}}</text>
+    </view>
+    <text class="text">{{siteDesc}}</text>
+</view>
+<view class="container">
+    <view class="circle">
+        <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
+    </view>
+</view>
+<view class="container">
+    <van-cell title="item" size="large" bind:click="onTimeClick" />
+    <van-cell-group>
+        <block wx:for="{{timeList}}">
+            <van-cell title="{{item}}" size="large" bind:click="onTimeClick" data-item="{{item}}"/>
+        </block>
+    </van-cell-group>
+</view>

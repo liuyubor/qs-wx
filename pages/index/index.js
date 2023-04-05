@@ -15,7 +15,6 @@ Page({
 
     },
     onTap(e) {
-        console.log(e);
         var id = e.currentTarget.dataset.id; // 获取当前项的id
         var name = e.currentTarget.dataset.name; // 获取当前项的name
         var desc = e.currentTarget.dataset.desc; // 获取当前项的desc

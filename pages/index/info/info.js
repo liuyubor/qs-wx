@@ -2,29 +2,19 @@
 const app = getApp();
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
         active: 0,
         siteId: "",
         siteName: "",
         siteDesc: "",
-        siteCount: "",
-        siteCap: "",
-        siteDays: "",
         timeList: null,
         stats: 69,
     },
-    onLoad: (options) => {
+    onLoad: function(options) {
         this.setData({
             siteId: options.id,
             siteName: options.name,
             siteDesc: options.desc,
-            siteCount: options.count,
-            siteCap: options.capacity,
-            siteDays: options.days
         });
 
         console.log(this.data);
@@ -44,7 +34,11 @@ Page({
             }
         })
     },
-    onTimeClick: (e) => {
+    onTimeClick: function(e) {
         console.log(e);
+        var time = e.currentTarget.dataset.item;
+        wx.navigateTo({
+            
+        })
     }
 })
