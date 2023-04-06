@@ -1,2 +1,12 @@
 <!--pages/index/success/success.wxml-->
-<text>pages/index/success/success.wxml</text>
+<view class="title-info">
+    <van-cell-group inset>
+        <van-cell title="{{siteName}}" />
+        <van-cell title="{{siteTime}}" />
+    </van-cell-group>
+    <van-button round type="info">返回首页</van-button>
+</view>
+
+<view class="qrcode">
+    <canvas style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
+</view>

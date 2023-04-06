@@ -49,11 +49,20 @@ Page({
                     },
                     success: (res) => {
                         console.log(res);
-                        if (res.statusCode === 200 && res.data.rows === 1) {
-                            wx.showToast({
-                                title: '预约成功',
-                            });
-                            wx.navigateBack();
+                        if (res.statusCode === 200) {
+                            if (res.data.rows === 1) {
+                                wx.showToast({
+                                    title: '预约成功',
+                                });
+                                wx.redirectTo({
+                                    url: '/pages/index/success/success?time=' + this.data.siteTime + '&siteName=' + this.data.siteName + '&username=' + this.data.username + '&phone=' + this.data.phone + '&siteId=' + this.data.siteId + '&userId=' + this.data.userId,
+                                })
+                            }else if(res.data.msg === '该时间段已被预约'){
+                                wx.showToast({
+                                    title: '该时间段已被预约',
+                                    icon: 'error'
+                                })
+                            }
                         } else {
                             wx.showToast({
                                 title: '预约失败',

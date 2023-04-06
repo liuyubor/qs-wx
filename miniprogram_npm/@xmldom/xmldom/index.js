@@ -4,14 +4,14 @@ var __DEFINE__ = function(modId, func, req) { var m = { exports: {}, _tempexport
 var __REQUIRE__ = function(modId, source) { if(!__MODS__[modId]) return require(source); if(!__MODS__[modId].status) { var m = __MODS__[modId].m; m._exports = m._tempexports; var desp = Object.getOwnPropertyDescriptor(m, "exports"); if (desp && desp.configurable) Object.defineProperty(m, "exports", { set: function (val) { if(typeof val === "object" && val !== m._exports) { m._exports.__proto__ = val.__proto__; Object.keys(val).forEach(function (k) { m._exports[k] = val[k]; }); } m._tempexports = val }, get: function () { return m._tempexports; } }); __MODS__[modId].status = 1; __MODS__[modId].func(__MODS__[modId].req, m, m.exports); } return __MODS__[modId].m.exports; };
 var __REQUIRE_WILDCARD__ = function(obj) { if(obj && obj.__esModule) { return obj; } else { var newObj = {}; if(obj != null) { for(var k in obj) { if (Object.prototype.hasOwnProperty.call(obj, k)) newObj[k] = obj[k]; } } newObj.default = obj; return newObj; } };
 var __REQUIRE_DEFAULT__ = function(obj) { return obj && obj.__esModule ? obj.default : obj; };
-__DEFINE__(1678725379866, function(require, module, exports) {
+__DEFINE__(1680762566858, function(require, module, exports) {
 var dom = require('./dom')
 exports.DOMImplementation = dom.DOMImplementation
 exports.XMLSerializer = dom.XMLSerializer
 exports.DOMParser = require('./dom-parser').DOMParser
 
-}, function(modId) {var map = {"./dom":1678725379867,"./dom-parser":1678725379869}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1678725379867, function(require, module, exports) {
+}, function(modId) {var map = {"./dom":1680762566859,"./dom-parser":1680762566861}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1680762566859, function(require, module, exports) {
 var conventions = require("./conventions");
 
 var find = conventions.find;
@@ -1847,8 +1847,8 @@ try{
 	exports.XMLSerializer = XMLSerializer;
 //}
 
-}, function(modId) { var map = {"./conventions":1678725379868}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1678725379868, function(require, module, exports) {
+}, function(modId) { var map = {"./conventions":1680762566860}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1680762566860, function(require, module, exports) {
 
 
 /**
@@ -2054,7 +2054,7 @@ exports.MIME_TYPE = MIME_TYPE;
 exports.NAMESPACE = NAMESPACE;
 
 }, function(modId) { var map = {}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1678725379869, function(require, module, exports) {
+__DEFINE__(1680762566861, function(require, module, exports) {
 var conventions = require("./conventions");
 var dom = require('./dom')
 var entities = require('./entities');
@@ -2378,8 +2378,8 @@ exports.__DOMHandler = DOMHandler;
 exports.normalizeLineEndings = normalizeLineEndings;
 exports.DOMParser = DOMParser;
 
-}, function(modId) { var map = {"./conventions":1678725379868,"./dom":1678725379867,"./entities":1678725379870,"./sax":1678725379871}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1678725379870, function(require, module, exports) {
+}, function(modId) { var map = {"./conventions":1680762566860,"./dom":1680762566859,"./entities":1680762566862,"./sax":1680762566863}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1680762566862, function(require, module, exports) {
 var freeze = require('./conventions').freeze;
 
 /**
@@ -2654,8 +2654,8 @@ exports.HTML_ENTITIES = freeze({
  */
 exports.entityMap = exports.HTML_ENTITIES
 
-}, function(modId) { var map = {"./conventions":1678725379868}; return __REQUIRE__(map[modId], modId); })
-__DEFINE__(1678725379871, function(require, module, exports) {
+}, function(modId) { var map = {"./conventions":1680762566860}; return __REQUIRE__(map[modId], modId); })
+__DEFINE__(1680762566863, function(require, module, exports) {
 var NAMESPACE = require("./conventions").NAMESPACE;
 
 //[4]   	NameStartChar	   ::=   	":" | [A-Z] | "_" | [a-z] | [#xC0-#xD6] | [#xD8-#xF6] | [#xF8-#x2FF] | [#x370-#x37D] | [#x37F-#x1FFF] | [#x200C-#x200D] | [#x2070-#x218F] | [#x2C00-#x2FEF] | [#x3001-#xD7FF] | [#xF900-#xFDCF] | [#xFDF0-#xFFFD] | [#x10000-#xEFFFF]
@@ -3317,8 +3317,8 @@ function split(source,start){
 exports.XMLReader = XMLReader;
 exports.ParseError = ParseError;
 
-}, function(modId) { var map = {"./conventions":1678725379868}; return __REQUIRE__(map[modId], modId); })
-return __REQUIRE__(1678725379866);
+}, function(modId) { var map = {"./conventions":1680762566860}; return __REQUIRE__(map[modId], modId); })
+return __REQUIRE__(1680762566858);
 })()
 //miniprogram-npm-outsideDeps=[]
 //# sourceMappingURL=index.js.map

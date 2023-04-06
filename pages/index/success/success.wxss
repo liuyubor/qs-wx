@@ -1,1 +1,16 @@
 /* pages/index/success/success.wxss */
+page {
+    background: #eeeeee;
+}
+
+.container {
+    background: #ffffff;
+    margin: 30rpx;
+    border-radius: 15rpx;
+}
+
+.title-info {
+    font-size: 30rpx;
+    font-weight: bold;
+    margin: 30rpx 0 0 0;
+}
