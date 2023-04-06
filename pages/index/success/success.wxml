@@ -1,12 +1,14 @@
 <!--pages/index/success/success.wxml-->
 <view class="title-info">
     <van-cell-group inset>
-        <van-cell title="{{siteName}}" />
-        <van-cell title="{{siteTime}}" />
+        <van-cell title="核算站点" value="{{siteName}}" />
+        <van-cell title="预约时间" value="{{siteTime}}" />
+        <van-cell title="预约状态" value="{{status}}" />
+        <van-cell title="姓名" value="{{username}}" />
+        <van-cell title="电话" value="{{phone}}" />
+        
     </van-cell-group>
-    <van-button round type="info">返回首页</van-button>
 </view>
-
-<view class="qrcode">
-    <canvas style="width: 200px; height: 200px;" canvas-id="myQrcode"></canvas>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">返回首页</van-button>
 </view>
