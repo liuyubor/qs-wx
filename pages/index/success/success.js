@@ -1,4 +1,4 @@
-// pages/index/confirm.js
+// pages/index/success/success.js
 Page({
 
     /**

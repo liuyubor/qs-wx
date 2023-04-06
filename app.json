@@ -7,7 +7,8 @@
         "pages/index/info/info",
         "pages/user/updataUser/updataUser",
         "pages/index/confirm",
-        "pages/index/confirm/confirm"
+        "pages/index/confirm/confirm",
+        "pages/index/success/success"
     ],
     "window": {
         "backgroundTextStyle": "light",
