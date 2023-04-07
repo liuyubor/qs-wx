@@ -1,6 +1,7 @@
 /* pages/index/info/info.wxss */
 page {
     background: #eeeeee;
+    padding: 0 0 150rpx 0;
 }
 
 .container {
@@ -27,4 +28,10 @@ page {
 
 .circle{
     margin: 80rpx;
+}
+
+.reserve {
+    padding: 50rpx 0;
+    text-align: center;
+    border-radius: 15rpx;
 }

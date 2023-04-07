@@ -1,22 +1,42 @@
 <!-- pages/index/info/info.wxml -->
-<view class="container">
-    <view class="title">
-        <text class="siteTitle">{{siteName}}</text>
-    </view>
-    <text class="text">{{siteDesc}}</text>
-</view>
-<view class="container">
-    <view class="circle">
-        <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
-    </view>
-</view>
-<view>
-    <van-cell-group inset>
-        <van-cell title="可预约时间段" size="large" />
-    </van-cell-group>
-    <van-cell-group inset>
-        <block wx:for="{{timeList}}">
-            <van-cell title="{{item}}" bind:click="onTimeClick" data-item="{{item}}" is-link="true" />
-        </block>
-    </van-cell-group>
-</view>
+<van-tabs sticky active="{{ active }}">
+    <van-tab title="站点描述">
+        <view class="container">
+            <view class="title">
+                <text class="siteTitle">{{siteName}}</text>
+            </view>
+            <text class="text">{{siteDesc}}</text>
+        </view>
+    </van-tab>
+    <van-tab title="站点信息">
+        <view class="container">
+            <view class="title">
+                <text class="siteTitle">已预约</text>
+            </view>
+            <view class="circle">
+                <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
+            </view>
+        </view>
+        <view>
+            <van-cell-group inset>
+                <van-cell title="总预约负载" size="large" value="{{capacity}}" />
+                <van-cell title="已预约人数" size="large" value="{{count}}" />
+                <van-cell title="剩余可预约人数" size="large" value="{{capacity-count}}" />
+                <van-cell title="核酸站点状态" size="large" value="{{status}}" />
+                <van-cell title="队伍人数" size="large" value="{{dequecount}}" />
+            </van-cell-group>
+        </view>
+    </van-tab>
+    <van-tab title="预约选择">
+        <view class="reserve">
+            <van-cell-group inset>
+                <van-cell title="可预约时间段" size="large" />
+            </van-cell-group>
+            <van-cell-group inset>
+                <block wx:for="{{timeList}}">
+                    <van-cell title="{{item}}" bind:click="onTimeClick" data-item="{{item}}" is-link="true" />
+                </block>
+            </van-cell-group>
+        </view>
+    </van-tab>
+</van-tabs>
