@@ -59,7 +59,7 @@ Page({
                                 })
                             }else if(res.data.msg === '该时间段已被预约'){
                                 wx.showToast({
-                                    title: '该时间段已被预约',
+                                    title: '您今日已有预约',
                                     icon: 'error'
                                 })
                             }
