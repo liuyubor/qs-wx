@@ -8,7 +8,18 @@
         "pages/user/updataUser/updataUser",
         "pages/index/confirm",
         "pages/index/confirm/confirm",
-        "pages/index/success/success"
+        "pages/index/success/success",
+        "pages/admin/admin",
+        "pages/admin/allsites/allsites",
+        "pages/admin/addsite/addsite",
+        "pages/admin/allreserves/allreserves",
+        "pages/admin/allusers/allusers",
+        "pages/admin/delreserve/delreserve",
+        "pages/admin/delsite/delsite",
+        "pages/admin/deluser/deluser",
+        "pages/admin/updatereserve/updatereserve",
+        "pages/admin/updatesite/updatesite",
+        "pages/admin/updateuser/updateuser"
     ],
     "window": {
         "backgroundTextStyle": "light",

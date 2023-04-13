@@ -18,7 +18,7 @@
     </view>
     <view class="cell-list">
         <van-cell-group inset>
-            <van-cell title="后台管理系统" size="large" is-link />
+            <van-cell title="后台管理系统" size="large" is-link url="/pages/admin/admin"/>
             <van-cell title="联系我们" size="large" is-link border="{{ false }}" />
         </van-cell-group>
     </view>
