@@ -1,2 +1,19 @@
-<!--pages/admin/updatereserve/updatereserve.wxml-->
-<text>pages/admin/updatereserve/updatereserve.wxml</text>
+<!-- pages/admin/updatereserve/updatereserve.wxml -->
+<view class="container">
+    <view class="addsite-title">修改预约信息</view>
+    <view class="input-list">
+        <van-cell-group>
+            <van-field required size="large" confirm-type="Done" type="number" label="ID" model:value="{{reserveId}}" placeholder="请输入ID" />
+            <van-field size="large" confirm-type="Done" type="number" label="站点ID" model:value="{{siteId}}" placeholder="请输入站点ID" />
+            <van-field size="large" confirm-type="Done" type="text" label="预约状态" model:value="{{status}}" placeholder="请输入预约状态"/>
+        </van-cell-group>
+        <van-radio-group value="{{ radio }}" bind:change="onChange">
+            <view class="item-radio" wx:for="{{timeSlots}}" wx:key="id">
+                <van-radio name="{{item.id}}">{{item.timeSlot}}</van-radio>
+            </view>
+        </van-radio-group>
+    </view>
+</view>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">提交</van-button>
+</view>

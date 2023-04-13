@@ -1,1 +1,14 @@
 /* pages/admin/updatereserve/updatereserve.wxss */
+.addsite-title {
+    padding: 50rpx;
+    font-size: large;
+    font-weight: bold;
+}
+
+.item-radio{
+    margin: 30rpx;
+}
+
+.submit {
+    margin: 50rpx;
+}

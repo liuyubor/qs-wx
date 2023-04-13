@@ -12,7 +12,7 @@ Page({
     onLoad(options) {
         wx.request({
             url: `${app.globalData.baseUrl}timeslot/getTimeSlots`,
-            method: 'POST',
+            method: 'GET',
             success: (res) => {
                 console.log(res);
                 if (res.statusCode === 200) {

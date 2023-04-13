@@ -1,2 +1,24 @@
-<!--pages/admin/updatesite/updatesite.wxml-->
-<text>pages/admin/updatesite/updatesite.wxml</text>
+<!-- pages/admin/updatesite/updatesite.wxml -->
+<view class="container">
+    <view class="addsite-title">修改站点信息</view>
+    <view class="input-list">
+        <van-cell-group>
+            <van-field required size="large" confirm-type="Done" type="number" label="ID" model:value="{{siteId}}" placeholder="请输入ID" />
+            <van-field size="large" confirm-type="Done" type="text" label="站点名称" model:value="{{name}}" placeholder="请输入站点名称" />
+            <van-field size="large" confirm-type="Done" type="textarea" label="站点描述" model:value="{{desp}}" placeholder="请输入站点描述" />
+            <van-field size="large" confirm-type="Done" type="number" label="站点容量" model:value="{{capacity}}" placeholder="请输入站点容量" />
+            <van-field size="large" confirm-type="Done" type="text" label="站点状态" model:value="{{status}}" placeholder="请输入站点状态" />
+        </van-cell-group>
+        <!-- <view class="submit">
+            <van-button type="info" size="large" bind:click="onClickLoad">加载ID对应时间段</van-button>
+        </view>
+        <van-checkbox-group name="时间段选择" value="{{ result }}" bind:change="onChange">
+            <view class="cheak-item" wx:for="{{timeSolts}}" wx:key="id">
+                <van-checkbox shape="square" name="{{item.id}}">{{item.timeSlot}}</van-checkbox>
+            </view>
+        </van-checkbox-group> -->
+    </view>
+</view>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">提交</van-button>
+</view>

@@ -1,66 +1,69 @@
 // pages/admin/updatesite/updatesite.js
+const app = getApp();
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        siteId: '',
+        name: '',
+        desp: '',
+        capacity: '',
+        stats: '',
+        result: [],
+        timeSlots: [],
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
+    onChange(event) {
+        this.setData({
+            result: event.detail,
+        })
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
+    onClickLoad() {
+        wx.request({
+            url: `${app.globalData.baseUrl}site/getTimeSlotById`,
+            method: 'POST',
+            data: {
+                id: this.data.siteId
+            },
+            success: (res) => {
+                console.log(res);
+                if (res.statusCode === 200) {
+                    this.setData({
+                        timeSlots: res.data.timeSlot
+                    });
+                }
+            }
+        });
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    onClick() {
+        wx.request({
+            url: `${app.globalData.baseUrl}site/updateSite`,
+            method: 'POST',
+            data: {
+                id: this.data.siteId,
+                name: this.data.name,
+                description: this.data.desp,
+                capacity: this.data.capacity,
+                status: this.data.stats,
+                timeSlots: this.data.result
+            },
+            success: (res) => {
+                console.log(res);
+                if (res.statusCode === 200) {
+                    if (res.data.rows === 1) {
+                        wx.showToast({
+                            title: '更新成功',
+                        });
+                    } else {
+                        wx.showToast({
+                            title: '更新失败',
+                        });
+                    }
+                } else {
+                    wx.showToast({
+                        title: '提交失败',
+                    });
+                }
+            }
+        });
     }
 })

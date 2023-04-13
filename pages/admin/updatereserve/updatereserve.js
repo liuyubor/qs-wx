@@ -1,66 +1,63 @@
 // pages/admin/updatereserve/updatereserve.js
+const app = getApp();
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        radio: '',
+        timeSlots: [],
+        reserveId: '',
+        siteId: '',
+        status: '',
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad(options) {
-
+        wx.request({
+            url: `${app.globalData.baseUrl}timeslot/getTimeSlots`,
+            method: 'GET',
+            success: (res) => {
+                console.log(res);
+                if (res.statusCode === 200) {
+                    this.setData({
+                        timeSlots: res.data.timeSlots
+                    });
+                }
+            }
+        });
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
+    onChange(event) {
+        this.setData({
+            radio: event.detail,
+        });
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    onClick() {
+        wx.request({
+            url: `${app.globalData.baseUrl}reserve/updateReserve`,
+            method: 'POST',
+            data: {
+                id: this.data.radio,
+                siteId: this.data.siteId,
+                status: this.data.status,
+                timeId: this.data.radio
+            },
+            success: (res) => {
+                console.log(res);
+                if (res.statusCode === 200) {
+                    if (res.data.rows === 1) {
+                        wx.showToast({
+                            title: '更新成功',
+                        });
+                    } else {
+                        wx.showToast({
+                            title: '更新失败',
+                        });
+                    }
+                } else {
+                    wx.showToast({
+                        title: '提交失败',
+                    });
+                }
+            }
+        });
     }
+    
 })

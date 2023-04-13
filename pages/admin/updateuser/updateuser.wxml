@@ -1,2 +1,16 @@
 <!--pages/admin/updateuser/updateuser.wxml-->
-<text>pages/admin/updateuser/updateuser.wxml</text>
+<view class="container">
+    <view class="addsite-title">修改站点信息</view>
+    <view class="input-list">
+        <van-cell-group>
+            <van-field required size="large" confirm-type="Done" type="number" label="ID" model:value="{{userId}}" placeholder="请输入ID" />
+            <van-field size="large" confirm-type="Done" label="用户姓名" model:value="{{username}}" placeholder="请输入用户姓名" />
+            <van-field size="large" confirm-type="Done" label="用户昵称" model:value="{{nickname}}" placeholder="请输入用户昵称" />
+            <van-field size="large" confirm-type="Done" label="电话号码" model:value="{{tel}}" placeholder="请输入电话号码" />
+            <van-field size="large" confirm-type="Done" label="角色" model:value="{{role}}" placeholder="请输入角色ID" />
+        </van-cell-group>
+    </view>
+</view>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">提交</van-button>
+</view>
