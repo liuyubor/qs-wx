@@ -8,3 +8,7 @@
 .cheak-item {
     margin: 30rpx;
 }
+
+.submit {
+    margin: 50rpx;
+}

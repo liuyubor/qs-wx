@@ -1,2 +1,13 @@
 <!--pages/admin/delreserve/delreserve.wxml-->
-<text>pages/admin/delreserve/delreserve.wxml</text>
+<view class="container">
+    <view class="addsite-title">删除预约</view>
+    <view class="input-list">
+        <van-cell-group>
+            <van-field required size="large" confirm-type="Done" type="text" label="ID" model:value="{{reserveId}}" placeholder="请输入ID" border="true" />
+        </van-cell-group>
+    </view>
+</view>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">提交</van-button>
+</view>
+

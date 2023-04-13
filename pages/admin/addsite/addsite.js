@@ -54,7 +54,7 @@ Page({
                     }
                 } else {
                     wx.showToast({
-                        title: '添加失败',
+                        title: '提交失败',
                     });
                 }
             }
