@@ -1,1 +1,11 @@
 /* pages/admin/allusers/allusers.wxss */
+page {
+    background: #eeeeee;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 50rpx;
+    font-size: large;
+    font-weight: bold;
+}

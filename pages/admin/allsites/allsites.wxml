@@ -1,2 +1,18 @@
 <!--pages/admin/allsites/allsites.wxml-->
-<text>pages/admin/allsites/allsites.wxml</text>
+<view class="container">
+    <scroll-view scroll-y="true" lower-threshold="100" bindscrolltolower="onLoadMore">
+        <view wx:for="{{sites}}" wx:key="index" data-id="{{item.id}}" data-name="{{item.name}}" data-desc="{{item.description}}" data-days="{{item.days}}" data-capacity="{{item.capacity}}" data-count="{{item.count}}">
+            <view class="item" >
+                <l-card type="primary" plaintext="{{true}}" title="{{item.name}}" >
+                    <view class="content">
+                        {{item.description}}
+                    </view>
+                </l-card>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+
+<view class="{{loadBg}}">
+    <van-empty image="network" description="加载失败" />
+</view>

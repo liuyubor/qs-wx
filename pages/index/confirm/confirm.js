@@ -38,7 +38,7 @@ Page({
         })
             .then(() => {
                 wx.request({
-                    url: `${app.globalData.baseUrl}site/reserve`,
+                    url: `${app.globalData.baseUrl}reserve/reserve`,
                     method: 'POST',
                     data: {
                         siteId: this.data.siteId,

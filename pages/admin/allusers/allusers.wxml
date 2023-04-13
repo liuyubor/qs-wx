@@ -1,2 +1,12 @@
-<!--pages/admin/allusers/allusers.wxml-->
-<text>pages/admin/allusers/allusers.wxml</text>
+<!-- pages/admin/allusers/allusers.wxml -->
+<!-- 查询所有用户 -->
+<view class="container">
+    <view class="allusers-title">所有用户</view>
+</view>
+<view class="allusers-list">
+    <van-cell-group>
+        <view class="allusers-item" wx:for="{{users}}" wx:key="id">
+            <van-cell title="{{item.id}}" value="{{item.username}}" label="{{item.nickname}}    {{item.tel}}" />
+        </view>
+    </van-cell-group>
+</view>

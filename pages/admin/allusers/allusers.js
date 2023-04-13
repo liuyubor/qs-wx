@@ -1,66 +1,62 @@
 // pages/admin/allusers/allusers.js
+const app = getApp()
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
+        loadBg: "network",
+        size: 10,
+        hasMore: true,
+        users: [],
+        currentPage: 1,
 
     },
+    loadMore() {
+        wx.showLoading({
+            title: '加载中...',
+        });
+        wx.request({
+            url: `${app.globalData.baseUrl}user/allUsers`,
+            method: 'POST',
+            data: {
+                currentPage: this.data.currentPage,
+                size: 10,
+            },
+            success: (res) => {
+                console.log(res);
+                if(res.statusCode === 200) {
+                    const users = res.data.users;
+                    if (users.length < this.data.size) {
+                        this.setData({
+                            hasMore: false
+                        });
+                    }
+                    this.setData({
+                        users: this.data.users.concat(users),
+                        currentPage: this.data.currentPage + 1
+                    });
+                }
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
+            },
+            fail: (res) => {
+                wx.showToast({
+                  title: '加载失败！',
+                  icon: "error"
+                })
+                this.setData({
+                    loadBg: "error"
+                })
+            },
+            complete: () => {
+                wx.hideLoading();
+            }
+        });
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
+    onLoad() {
+        this.loadMore();
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
     onReachBottom() {
-
+        if (this.data.hasMore) {
+            this.loadMore();
+        }
     },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
 })

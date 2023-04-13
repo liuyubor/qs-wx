@@ -1,2 +1,11 @@
 <!--pages/admin/allreserves/allreserves.wxml-->
-<text>pages/admin/allreserves/allreserves.wxml</text>
+<view class="container">
+    <view class="allreserves-title">所有预约</view>
+</view>
+<view class="allreserves-list">
+    <van-cell-group>
+        <view class="allreserves-item" wx:for="{{reserves}}" wx:key="id">
+            <van-cell size="large" title="{{item.id}}" value="{{item.user}}" label="{{item.site}} | {{item.date}} | {{item.timeSlot}} | {{item.status}}" />
+        </view>
+    </van-cell-group>
+</view>
