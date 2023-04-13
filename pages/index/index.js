@@ -71,15 +71,6 @@ Page({
         });
     },
     onLoad() {
-        wx.getLocation({
-            type: 'wgs84',
-            success (res) {
-              setData({
-                latitude: res.latitude,
-                longitude: res.longitude
-              }) 
-            }
-           })
         this.loadMore();
     },
     onReachBottom() {

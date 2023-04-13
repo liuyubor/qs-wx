@@ -1,2 +1,19 @@
-<!--pages/admin/addsite/addsite.wxml-->
-<text>pages/admin/addsite/addsite.wxml</text>
+<!-- pages/admin/addsite/addsite.wxml -->
+<view class="container">
+    <view class="addsite-title">添加站点</view>
+    <view class="input-list">
+        <van-cell-group>
+            <van-field required size="large" confirm-type="Done" type="text" label="站点名称" model:value="{{ name }}" placeholder="请输入站点名" border="true" />
+            <van-field required size="large" confirm-type="Done" type="textarea" label="站点描述" model:value="{{ desp }}" placeholder="请输入站点描述" border="true" />
+            <van-field required size="large" confirm-type="Done" type="text" label="站点负载" model:value="{{ capacity }}" placeholder="请输入站点负载量" border="true" />
+        </van-cell-group>
+        <van-checkbox-group name="时间段选择" value="{{ result }}" bind:change="onChange">
+            <view class="cheak-item" wx:for="{{ timeSolts }}" wx:key="id">
+                <van-checkbox shape="square" name="{{item.id}}">{{item.timeSlot}}</van-checkbox>
+            </view>
+        </van-checkbox-group>
+    </view>
+</view>
+<view class="submit">
+    <van-button type="info" size="large" bind:click="onClick">提交</van-button>
+</view>

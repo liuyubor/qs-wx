@@ -1,1 +1,10 @@
 /* pages/admin/addsite/addsite.wxss */
+.addsite-title {
+    padding: 50rpx;
+    font-size: large;
+    font-weight: bold;
+}
+
+.cheak-item {
+    margin: 30rpx;
+}
