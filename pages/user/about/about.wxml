@@ -1,0 +1,18 @@
+<!-- pages/user/about/about.wxml -->
+<view class="about">
+    <view class="about__title">关于我们</view>
+    <view class="about__content">
+        <view class="about__content-item">
+            <view class="about__content-item-title">学校</view>
+            <view class="about__content-item-value">南京理工大学紫金学院</view>
+        </view>
+        <view class="about__content-item">
+            <view class="about__content-item-title">地址</view>
+            <view class="about__content-item-value">江苏省南京市文澜路89号</view>
+        </view>
+        <view class="about__content-item">
+            <view class="about__content-item-title">邮箱</view>
+            <view class="about__content-item-value">liuyubor@gmail.com</view>
+        </view>
+    </view>
+</view>

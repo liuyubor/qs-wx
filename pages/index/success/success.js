@@ -29,11 +29,11 @@ Page({
                 console.log(res);
                 if (res.statusCode === 200) {
                     this.setData({
-                        siteTime: res.data.map.time,
-                        siteName: res.data.map.site,
-                        username: res.data.map.user,
+                        siteTime: res.data.reserves.time,
+                        siteName: res.data.reserves.site,
+                        username: res.data.reserves.user,
                         phone: wx.getStorageSync('tel'),
-                        status: res.data.map.status
+                        status: res.data.reserves.status
                     });
                 }
             }

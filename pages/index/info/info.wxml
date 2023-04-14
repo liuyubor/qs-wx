@@ -11,7 +11,7 @@
     <van-tab title="站点信息">
         <view class="container">
             <view class="title">
-                <text class="siteTitle">已预约</text>
+                <text class="siteTitle">已预约人数</text>
             </view>
             <view class="circle">
                 <van-circle value="{{stats}}" text="{{stats}}%" stroke-width="9" ayer-color="#ee0a24" size="180" />
@@ -19,7 +19,7 @@
         </view>
         <view>
             <van-cell-group inset>
-                <van-cell title="总预约负载" size="large" value="{{capacity}}" />
+                <van-cell title="总预约容量" size="large" value="{{capacity}}" />
                 <van-cell title="已预约人数" size="large" value="{{count}}" />
                 <van-cell title="剩余可预约人数" size="large" value="{{capacity-count}}" />
                 <van-cell title="核酸站点状态" size="large" value="{{status}}" />

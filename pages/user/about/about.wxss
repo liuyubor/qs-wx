@@ -1,0 +1,32 @@
+/* pages/user/about/about.wxss */
+page {
+    background-color: #eeeeee;
+}
+
+.about {
+    padding: 50rpx;
+    margin: 30rpx;
+    background-color: #ffffff;
+    border-radius: 30rpx;
+    text-align: center;
+}
+
+.about__title {
+    font-size: 100rpx;
+    margin-bottom: 20rpx;
+}
+
+.about__content-item-title {
+    font-size: 60rpx;
+    margin-bottom: 10rpx;
+    margin-left: 40rpx;
+    text-align: left;
+}
+
+.about__content-item-value {
+    font-size: 40rpx;
+    margin-bottom: 10rpx;
+    margin-left: 45rpx;
+    text-align: left;
+    font-style: italic;
+}

@@ -19,7 +19,8 @@
         "pages/admin/deluser/deluser",
         "pages/admin/updatereserve/updatereserve",
         "pages/admin/updatesite/updatesite",
-        "pages/admin/updateuser/updateuser"
+        "pages/admin/updateuser/updateuser",
+        "pages/user/about/about"
     ],
     "window": {
         "backgroundTextStyle": "light",
