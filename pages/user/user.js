@@ -7,7 +7,7 @@ Page({
 
     data: {
         isLogin: false,
-        active: 2,
+        active: 1,
         avatarUrl: defaultAvatarUrl,
         username: '登录注册'
     },

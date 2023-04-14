@@ -43,9 +43,6 @@
                 "pagePath": "pages/index/index"
             },
             {
-                "pagePath": "pages/notification/notification"
-            },
-            {
                 "pagePath": "pages/user/user"
             }
         ]

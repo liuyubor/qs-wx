@@ -68,7 +68,7 @@ App({
         active: 0,
         tabbar: [
             "/pages/index/index",
-            "/pages/notification/notification",
+            // "/pages/notification/notification",
             "/pages/user/user",
         ]
     }
